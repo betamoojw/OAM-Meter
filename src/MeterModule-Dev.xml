@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<KNX xmlns="http://knx.org/xml/project/20" xmlns:op="http://github.com/OpenKNX/OpenKNXproducer">
+  <op:ETS
+    OpenKnxId="0xAF"
+    ApplicationNumber="0x05"
+    ApplicationVersion="5"
+    ReplacesVersions="4 3 2 1"
+    ApplicationRevision="0"
+    ProductName="Zählermodul"
+    BusCurrent="10"
+    BuildSuffix="-Dev"
+    BuildSuffixText=" (Dev)"
+    OrderNumber="OpenKnxMeter"
+    ApplicationName="OpenKnxMeter" />
+
+  <op:define prefix="BASE" ModuleType="10"
+    share="../lib/OGM-Common/src/Common.share.xml" />
+
+  <op:define prefix="MTR" ModuleType="20"
+    share="../lib/OFM-Meter/src/MeterModule.share.xml"
+    template="../lib/OFM-Meter/src/MeterModule.templ.xml"
+    NumChannels="20" KoOffset="400">
+    <op:verify File="../lib/OFM-Meter/library.json" ModuleVersion="0" /> 
+  </op:define>
+
+  <op:define prefix="LOG" ModuleType="10"
+    share="../lib/OFM-LogicModule/src/Logikmodul.share.xml"
+    template="../lib/OFM-LogicModule/src/Logikmodul.templ.xml"
+    NumChannels="20" KoOffset="100">
+    <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="48" /> 
+  </op:define>
+
+  <generate />
+</KNX>

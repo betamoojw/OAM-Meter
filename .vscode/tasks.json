@@ -1,0 +1,114 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "OpenKNXproducer",
+            "type": "shell",
+            "command": "~/bin/OpenKNXproducer.exe",
+            "args": [
+                "create",
+                "--Debug",
+                "-h",
+                "include/knxprod.h",
+                "src/MeterModule-Dev"
+            ],
+            "problemMatcher": [],
+            "group": "test"
+        },
+        {
+            "label": "Gen. Dependencies.txt",
+            "type": "shell",
+            "command": "lib/OGM-Common/scripts/setup/reusable/Build-Dependencies.ps1",
+            "args": [
+            ],
+            "problemMatcher": [],
+            "group": "test"
+        },
+        {
+            "label": "Develop: SOM-UP",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "develop_SOM_UP"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Develop: SOM-UP (USB)",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "develop_SOM_UP_USB",
+                "upload"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Develop: SOM-UP (JLINK)",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "develop_SOM_UP_JLINK",
+                "upload"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Develop: MASIFI_SENSOR_BREAKOUT",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "develop_MASIFI_SENSOR_BREAKOUT"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Develop: MASIFI_SENSOR_BREAKOUT (USB)",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "develop_MASIFI_SENSOR_BREAKOUT_USB",
+                "upload"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Develop: MASIFI_SENSOR_BREAKOUT (JLINK)",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "develop_MASIFI_SENSOR_BREAKOUT_JLINK",
+                "upload"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build-Beta",
+            "type": "shell",
+            "command": "scripts/Build-Release.ps1", 
+            "args": [
+                "Beta"
+            ],
+            "problemMatcher": [],
+            "group": "test"
+        },
+        {
+            "label": "Build-Dev",
+            "type": "shell",
+            "command": "scripts/Build-Release.ps1",
+            "args": [
+                "Dev"
+            ],
+            "problemMatcher": [],
+            "group": "test"
+        }
+    ]
+}
