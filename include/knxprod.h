@@ -10,7 +10,7 @@
                                              
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 5
-#define MAIN_ApplicationVersion 5
+#define MAIN_ApplicationVersion 6
 #define MAIN_ParameterSize 2667
 #define MAIN_MaxKoNumber 480
 #define MAIN_OrderNumber "OpenKnxMeter"
@@ -202,17 +202,17 @@
 #define MTR_KoCalcNumber(index) (index + MTR_KoBlockOffset + _channelIndex * MTR_KoBlockSize)
 #define MTR_KoCalcIndex(number) ((number >= MTR_KoCalcNumber(0) && number < MTR_KoCalcNumber(MTR_KoBlockSize)) ? (number - MTR_KoOffset) % MTR_KoBlockSize : -1)
 
-#define MTR_KoChannelIn 1
-#define MTR_KoChannelOut 2
-#define MTR_KoChannelOpt 3
+#define MTR_KoChannelInput 1
+#define MTR_KoChannelOutut 2
+#define MTR_KoChannelOptional 3
 #define MTR_KoChannelReset 4
 
 // 
-#define KoMTR_ChannelIn                           (knx.getGroupObject(MTR_KoCalcNumber(MTR_KoChannelIn)))
+#define KoMTR_ChannelInput                        (knx.getGroupObject(MTR_KoCalcNumber(MTR_KoChannelInput)))
 // 
-#define KoMTR_ChannelOut                          (knx.getGroupObject(MTR_KoCalcNumber(MTR_KoChannelOut)))
+#define KoMTR_ChannelOutut                        (knx.getGroupObject(MTR_KoCalcNumber(MTR_KoChannelOutut)))
 // 
-#define KoMTR_ChannelOpt                          (knx.getGroupObject(MTR_KoCalcNumber(MTR_KoChannelOpt)))
+#define KoMTR_ChannelOptional                     (knx.getGroupObject(MTR_KoCalcNumber(MTR_KoChannelOptional)))
 // 
 #define KoMTR_ChannelReset                        (knx.getGroupObject(MTR_KoCalcNumber(MTR_KoChannelReset)))
 
