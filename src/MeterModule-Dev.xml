@@ -4,8 +4,8 @@
   <op:ETS
     OpenKnxId="0xAF"
     ApplicationNumber="0x05"
-    ApplicationVersion="15"
-    ReplacesVersions="14 13 12 11 10 9 8 7 6 5 4 3 2 1"
+    ApplicationVersion="4"
+    ReplacesVersions="3 2 1"
     ApplicationRevision="0"
     ProductName="Zählermodul"
     BusCurrent="10"
