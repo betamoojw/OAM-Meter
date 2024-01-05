@@ -34,13 +34,13 @@ if (!$?) { exit 1 }
 
 
 # Example call, the following 2 lines might be there multiple times for each firmware which should be built
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_SOM_UP firmware_SOM_UP uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_PiPico_BCU_Connector firmware_PiPico_BCU_Connector uf2
 if (!$?) { exit 1 }
 
-if ($args[0] -eq "Dev") {
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEV_BOARD firmware_DEV_BOARD uf2
-if (!$?) { exit 1 }
-}
+# if ($args[0] -eq "Dev") {
+# ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEV_BOARD firmware_DEV_BOARD uf2
+# if (!$?) { exit 1 }
+# }
 
 # # build firmware for PiPico-BCU-Connector
 # ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_PiPico_BCU_Connector firmware_PiPico_BCU_Connector uf2

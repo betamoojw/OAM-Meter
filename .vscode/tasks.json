@@ -95,7 +95,7 @@
             "type": "shell",
             "command": "scripts/Build-Release.ps1", 
             "args": [
-                "Beta"
+                ""
             ],
             "problemMatcher": [],
             "group": "test"
