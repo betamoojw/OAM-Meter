@@ -10,7 +10,7 @@
                                              
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 5
-#define MAIN_ApplicationVersion 4
+#define MAIN_ApplicationVersion 9
 #define MAIN_ParameterSize 2907
 #define MAIN_MaxKoNumber 479
 #define MAIN_OrderNumber "OpenKnxMeter"
