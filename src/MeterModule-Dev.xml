@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns="http://knx.org/xml/project/20" xmlns:op="http://github.com/OpenKNX/OpenKNXproducer">
+  <op:config name="%BASE_PeriodicSave%" value="1" />
+  <op:config name="%BASE_PeriodicSaveDefault%" value="4" />
   <op:ETS
     OpenKnxId="0xAF"
     ApplicationNumber="0x05"
-    ApplicationVersion="12"
-    ReplacesVersions="11 10 9 8 7 6 5 4 3 2 1 0"
-    ApplicationRevision="0"
+    ApplicationVersion="25"
+    ReplacesVersions="24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0"
+    ApplicationRevision="1"
     ProductName="Zählermodul"
     BusCurrent="10"
     BuildSuffix="-Dev"
