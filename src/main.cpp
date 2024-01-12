@@ -13,8 +13,6 @@ void setup()
   openknx.addModule(8, openknxUsbExchangeModule);
   openknx.addModule(9, openknxFileTransferModule);
   openknx.setup();
-  
-  logDebug("---", "BASE_PeriodicSave: %u", ParamBASE_PeriodicSave);
 }
 
 void loop()

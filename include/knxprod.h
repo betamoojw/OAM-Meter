@@ -10,11 +10,11 @@
                                              
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 5
-#define MAIN_ApplicationVersion 24
+#define MAIN_ApplicationVersion 28
 #define MAIN_ParameterSize 2979
 #define MAIN_MaxKoNumber 479
 #define MAIN_OrderNumber "OpenKnxMeter"
-#define MTR_ModuleVersion 0
+#define MTR_ModuleVersion 1
 #define LOG_ModuleVersion 48
 // Parameter with single occurrence
 
@@ -69,6 +69,9 @@
 #define BASE_HeartbeatExtended                   14      // 1 Bit, Bit 4
 #define     BASE_HeartbeatExtendedMask 0x10
 #define     BASE_HeartbeatExtendedShift 4
+#define BASE_ManualSave                          14      // 3 Bits, Bit 2-0
+#define     BASE_ManualSaveMask 0x07
+#define     BASE_ManualSaveShift 0
 #define BASE_PeriodicSave                        15      // 8 Bits, Bit 7-0
 #define BASE_Dummy                               45      // uint8_t
 
@@ -112,7 +115,9 @@
 #define ParamBASE_ReadTimeDate                        ((bool)(knx.paramByte(BASE_ReadTimeDate) & BASE_ReadTimeDateMask))
 // Erweitertes "In Betrieb"
 #define ParamBASE_HeartbeatExtended                   ((bool)(knx.paramByte(BASE_HeartbeatExtended) & BASE_HeartbeatExtendedMask))
-// Zyklisches Speichern
+// Manuelles speichern
+#define ParamBASE_ManualSave                          (knx.paramByte(BASE_ManualSave) & BASE_ManualSaveMask)
+// Zyklisches speichern
 #define ParamBASE_PeriodicSave                        (knx.paramByte(BASE_PeriodicSave))
 // 
 #define ParamBASE_Dummy                               (knx.paramByte(BASE_Dummy))
@@ -122,6 +127,7 @@
 #define BASE_KoDate 3
 #define BASE_KoDiagnose 7
 #define BASE_KoIsSummertime 10
+#define BASE_KoManualSave 11
 
 // In Betrieb
 #define KoBASE_Heartbeat                           (knx.getGroupObject(BASE_KoHeartbeat))
@@ -133,6 +139,8 @@
 #define KoBASE_Diagnose                            (knx.getGroupObject(BASE_KoDiagnose))
 // Sommerzeit aktiv
 #define KoBASE_IsSummertime                        (knx.getGroupObject(BASE_KoIsSummertime))
+// Speichern
+#define KoBASE_ManualSave                          (knx.getGroupObject(BASE_KoManualSave))
 
 #define MTR_ChannelCount 20
 
@@ -199,7 +207,7 @@
 #define ParamMTR_ChannelIgnoreZero                   ((bool)(knx.paramByte(MTR_ParamCalcIndex(MTR_ChannelIgnoreZero)) & MTR_ChannelIgnoreZeroMask))
 // Berechnen
 #define ParamMTR_ChannelPulseCalculation             ((bool)(knx.paramByte(MTR_ParamCalcIndex(MTR_ChannelPulseCalculation)) & MTR_ChannelPulseCalculationMask))
-// Max Differenz
+// Maximale  Differenz
 #define ParamMTR_ChannelInDistance                   (knx.paramWord(MTR_ParamCalcIndex(MTR_ChannelInDistance)))
 // Impulse je Einheit
 #define ParamMTR_ChannelInPulses                     (knx.paramWord(MTR_ParamCalcIndex(MTR_ChannelInPulses)))
