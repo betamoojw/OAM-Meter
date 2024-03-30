@@ -37,8 +37,12 @@ if (!$?) { exit 1 }
 ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_PiPico_BCU_Connector firmware_PiPico_BCU_Connector uf2
 if (!$?) { exit 1 }
 
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG1_BASE_V0 firmware_OKNXHW_REG1_BASE_V0 uf2
+if (!$?) { exit 1 }
+
+
 # if ($args[0] -eq "Dev") {
-# ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEV_BOARD firmware_DEV_BOARD uf2
+# ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG1_BASE_V0 firmware_OKNXHW_REG1_BASE_V0 uf2
 # if (!$?) { exit 1 }
 # }
 
