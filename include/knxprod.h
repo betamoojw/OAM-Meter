@@ -10,11 +10,12 @@
                                              
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 5
-#define MAIN_ApplicationVersion 5
+#define MAIN_ApplicationVersion 8
 #define MAIN_ParameterSize 2940
 #define MAIN_MaxKoNumber 479
 #define MAIN_OrderNumber "OpenKnxMeter"
 #define BASE_ModuleVersion 17
+#define UCT_ModuleVersion 1
 #define MTR_ModuleVersion 2
 #define LOG_ModuleVersion 50
 // Parameter with single occurrence
@@ -142,6 +143,8 @@
 #define KoBASE_IsSummertime                        (knx.getGroupObject(BASE_KoIsSummertime))
 // Speichern
 #define KoBASE_ManualSave                          (knx.getGroupObject(BASE_KoManualSave))
+
+
 
 #define MTR_VisibleChannels                     46      // uint8_t
 

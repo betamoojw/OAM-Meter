@@ -8,8 +8,8 @@
   <op:ETS
     OpenKnxId="0xAF"
     ApplicationNumber="0x05"
-    ApplicationVersion="5"
-    ReplacesVersions="4 3 2 1"
+    ApplicationVersion="8"
+    ReplacesVersions="7 6 5 4 3 2 1"
     ApplicationRevision="0"
     ProductName="Zählermodul"
     BusCurrent="10"
@@ -20,7 +20,12 @@
 
   <op:define prefix="BASE" ModuleType="10"
     share="../lib/OGM-Common/src/Common.share.xml">
-    <op:verify File="../lib/OGM-Common//library.json" ModuleVersion="17" /> 
+    <op:verify File="../lib/OGM-Common/library.json" ModuleVersion="17" /> 
+  </op:define>
+
+  <op:define prefix="UCT" ModuleType="19"
+    share="../lib/OFM-ConfigTransfer/src/ConfigTransfer.share.xml">
+    <op:verify File="../lib/OFM-ConfigTransfer/library.json" ModuleVersion="0.1" />
   </op:define>
 
   <op:define prefix="MTR" ModuleType="20"
