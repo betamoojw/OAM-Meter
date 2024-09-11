@@ -8,8 +8,8 @@
   <op:ETS
     OpenKnxId="0xAF"
     ApplicationNumber="0x05"
-    ApplicationVersion="8"
-    ReplacesVersions="7 6 5 4 3 2 1"
+    ApplicationVersion="58"
+    ReplacesVersions="57 56 55 54 53 52 51 50 49 48 47 46 45 44 43 42 41 40 39 38 37 36 35 34 33 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3"
     ApplicationRevision="0"
     ProductName="Zählermodul"
     BusCurrent="10"
@@ -20,12 +20,16 @@
 
   <op:define prefix="BASE" ModuleType="10"
     share="../lib/OGM-Common/src/Common.share.xml">
-    <op:verify File="../lib/OGM-Common/library.json" ModuleVersion="17" /> 
+    <op:verify File="../lib/OGM-Common/library.json" ModuleVersion="1.2" /> 
+  </op:define>
+
+  <op:define prefix="OAM" ModuleType="99"
+    share="../src/MeterModule.base.xml">
   </op:define>
 
   <op:define prefix="UCT" ModuleType="19"
     share="../lib/OFM-ConfigTransfer/src/ConfigTransfer.share.xml">
-    <op:verify File="../lib/OFM-ConfigTransfer/library.json" ModuleVersion="0.1" />
+    <op:verify File="../lib/OFM-ConfigTransfer/library.json" ModuleVersion="0.2" />
   </op:define>
 
   <op:define prefix="MTR" ModuleType="20"
@@ -35,11 +39,32 @@
     <op:verify File="../lib/OFM-Meter/library.json" ModuleVersion="0.2" /> 
   </op:define>
 
+  <op:define prefix="SML" ModuleType="21"
+    share="../lib/OFM-SML/src/SMLModule.share.xml"
+    template="../lib/OFM-SML/src/SMLModule.templ.xml"
+    NumChannels="3" KoOffset="500">
+    <op:verify File="../lib/OFM-SML/library.json" ModuleVersion="0.1" /> 
+  </op:define>
+  
+  <op:define prefix="BI" ModuleType="40"
+    share="../lib/OFM-BinaryInput/src/BinaryInputChannel.share.xml"
+    template="../lib/OFM-BinaryInput/src/BinaryInputChannel.templ.xml"
+    NumChannels="5" KoOffset="41">
+    <op:verify File="../lib/OFM-BinaryInput/library.json" ModuleVersion="0.2" /> 
+  </op:define>
+
+  <op:define prefix="BTN" ModuleType="30"
+    share="../lib/OFM-VirtualButton/src/VirtualButton.share.xml"
+    template="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml"
+    NumChannels="20" KoOffset="600">
+    <op:verify File="../lib/OFM-VirtualButton/library.json" ModuleVersion="0.5" /> 
+  </op:define>
+
   <op:define prefix="LOG" ModuleType="10"
     share="../lib/OFM-LogicModule/src/Logikmodul.share.xml"
     template="../lib/OFM-LogicModule/src/Logikmodul.templ.xml"
     NumChannels="20" KoOffset="100">
-    <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="3.2" /> 
+    <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="3.3" /> 
   </op:define>
 
   <generate />

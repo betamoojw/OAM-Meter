@@ -34,20 +34,29 @@ if (!$?) { exit 1 }
 
 
 # Example call, the following 2 lines might be there multiple times for each firmware which should be built
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_PiPico_BCU_Connector firmware_PiPico_BCU_Connector uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_PiPico_BCU_Connector PiPico_BCU_Connector uf2
 if (!$?) { exit 1 }
 
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG1_BASE_V0 firmware_OKNXHW_REG1_BASE_V0 uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG1_BASE_V0 OKNXHW_REG1_BASE_V0 uf2
+if (!$?) { exit 1 }
+
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG1_BASE_V1 OKNXHW_REG1_BASE_V1 uf2
+if (!$?) { exit 1 }
+
+# ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG2_PIPICO_V1_BASE OKNXHW_REG2_PIPICO_V1_BASE uf2
+# if (!$?) { exit 1 }
+
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_SMARTMF_METER_REG2 SMARTMF_METER_REG2 uf2
 if (!$?) { exit 1 }
 
 
 # if ($args[0] -eq "Dev") {
-# ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG1_BASE_V0 firmware_OKNXHW_REG1_BASE_V0 uf2
+# ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG1_BASE_V0 OKNXHW_REG1_BASE_V0 uf2
 # if (!$?) { exit 1 }
 # }
 
 # # build firmware for PiPico-BCU-Connector
-# ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_PiPico_BCU_Connector firmware_PiPico_BCU_Connector uf2
+# ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_PiPico_BCU_Connector PiPico_BCU_Connector uf2
 # if (!$?) { exit 1 }
 
 # build firmware based on generated headerfile for SAMD
