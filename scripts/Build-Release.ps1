@@ -46,8 +46,12 @@ if (!$?) { exit 1 }
 ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG1_BASE_V1 OpenKNX-REG1-SEN-Multi uf2
 if (!$?) { exit 1 }
 
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG2_PIPICO_V1_BASE OKNXHW_REG2_PIPICO_V1_BASE uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG2_PIPICO_V1 OKNXHW_REG2_PIPICO_V1 uf2
 if (!$?) { exit 1 }
+
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG2_PIPICO_W_V1 OKNXHW_REG2_PIPICO_W_V1 uf2
+if (!$?) { exit 1 }
+
 
 ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_SMARTMF_1TE_BE3 SmartMF-1TE-BE3 uf2
 if (!$?) { exit 1 }
