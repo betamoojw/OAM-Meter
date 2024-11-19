@@ -43,7 +43,7 @@ if (!$?) { exit 1 }
 ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG1_BASE_V1 OpenKNX-REG1-Base-V1 uf2
 if (!$?) { exit 1 }
 
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG1_BASE_V1 OpenKNX-REG1-SEN-Multi uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG1_SEN_MULTI OpenKNX-REG1-SEN-Multi uf2
 if (!$?) { exit 1 }
 
 ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG2_PIPICO_V1 OKNXHW_REG2_PIPICO_V1 uf2
