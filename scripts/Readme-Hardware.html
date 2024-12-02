@@ -1,1 +1,306 @@
-<!-- This Template should be copied to your project setup and modified accordingly -->
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Geräteinfos</title>
+    <style>
+        /* Allgemeine Stile */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 2em;
+            padding: 0;
+        }
+
+        /* Überschriften */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #222;
+            margin: 1.5em 0 0.5em;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+        h3 {
+            font-size: 1.75em;
+        }
+
+        h4 {
+            font-size: 1.5em;
+        }
+
+        h5 {
+            font-size: 1.25em;
+        }
+
+        h6 {
+            font-size: 1em;
+        }
+
+        /* Links */
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover,
+        a:focus {
+            text-decoration: underline;
+        }
+
+        /* Listen */
+        ul,
+        ol {
+            margin: 1em 0;
+            padding-left: 1.5em;
+        }
+
+        li {
+            margin: 0.5em 0;
+        }
+
+        /* Absätze */
+        p {
+            margin: 1em 0;
+        }
+
+        /* Buttons */
+        button {
+            font-family: Arial, sans-serif;
+            font-size: 1em;
+            padding: 0.5em 1em;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Formularelemente */
+        input,
+        textarea,
+        select {
+            font-family: Arial, sans-serif;
+            font-size: 1em;
+            padding: 0.5em;
+            margin: 0.5em 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        /* Tabellen */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 0.5em;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1f1f1;
+        }
+
+        /* Fußzeile */
+        footer {
+            font-size: 0.875em;
+            color: #666;
+            text-align: center;
+            padding: 1em 0;
+            background-color: #f1f1f1;
+            margin-top: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Geräteinfos</h1>
+    </header>
+    <main>
+        <p>
+            Hier wird aufgeführt, welche Geräte aktuell unterstützt werden. Zusätzlich können verschiedene
+            Firmware-Varianten
+            verfügbar sein, um unterschiedliche Hardwarekonfigurationen auf denselben Geräten zu ermöglichen.
+            Beispielsweise
+            verfügt das REG1 über eine Onboard-Schnittstelle, die wahlweise als zweifacher Binäreingang oder als
+            SML-Eingang
+            genutzt werden kann. Die Spalten zeigen dabei, welcher Kanal in der ETS welcher Schnittstelle zugeordnet
+            wurde.
+        </p>
+
+
+        <table width="100%" border="1" cellspacing="0" cellpadding="5">
+            <thead>
+                <tr>
+                    <th align="left">Geräte-Name</th>
+                    <th align="left">Geräte-ID</th>
+                    <th align="left">BE1</th>
+                    <th align="left">BE2</th>
+                    <th align="left">BE3</th>
+                    <th align="left">BE4</th>
+                    <th align="left">BE5</th>
+                    <th align="left">SML1</th>
+                    <th align="left">SML2</th>
+                    <th align="left">SML3</th>
+                    <th align="left">Notiz</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>OpenKNX PiPico BCU Connector</td>
+                    <td>PiPico-BCU-Connector</td>
+                    <td>GPIO 3</td>
+                    <td>GPIO 4</td>
+                    <td>GPIO 5</td>
+                    <td>GPIO 9</td>
+                    <td>GPIO 10</td>
+                    <td>TX 27 - RX 28</td>
+                    <td>TX 22 - RX 26</td>
+                    <td>TX 20 - RX 21</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>OpenKNX UP1 8xSensor</td>
+                    <td>SEN-UP1-8xTH</td>
+                    <td>A1</td>
+                    <td>A2</td>
+                    <td>B1</td>
+                    <td>B2</td>
+                    <td>C1</td>
+                    <td>TX D1 - RX D2</td>
+                    <td>TX E1 - RX E2</td>
+                    <td>TX F1 - RX F2</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>OpenKNX REG1 Basismodul V0</td>
+                    <td>REG1-Base-V0</td>
+                    <td></td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Onboard</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>OpenKNX REG1 Basismodul</td>
+                    <td>REG1-Base</td>
+                    <td></td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Onboard</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>OpenKNX REG1 MultiSensor</td>
+                    <td>REG1-SEN-Multi</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Platine: Voderer</td>
+                    <td>Platine: Mittlerer</td>
+                    <td>Platine: Hinterer</td>
+                    <td>Onboard</td> 
+                    <td>Platine: Voderer</td>
+                    <td>Platine: Hinterer</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>OpenKNX REG2 PiPico V1</td>
+                    <td>XXX</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TX 4 - RX 5</td>
+                    <td>TX 6 - RX 7</td>
+                    <td>-</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>OpenKNX REG2 PiPico W V1</td>
+                    <td>XXX</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TX 4 - RX 5</td>
+                    <td>TX 6 - RX 7</td>
+                    <td>-</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Smart-MF S0-Zählermodul</td>
+                    <td>SMARTMF-1TE-BE-3CH</td>
+                    <td>Links</td>
+                    <td>Mitte</td>
+                    <td>Rechts</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Smart-MF eHZ Schnittstelle</td>
+                    <td>SMARTMF-2SML-3BE</td>
+                    <td>Links</td>
+                    <td>Mitte</td>
+                    <td>Rechts</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Links</td>
+                    <td>Rechts</td>
+                    <td>-</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </main>
+    <footer>
+        <p><a href="http://www.openknx.de" target="_blank"><b>www.OpenKNX.de</b></a></p>
+    </footer>
+</body>
+
+</html>
