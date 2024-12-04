@@ -50,16 +50,16 @@ if (!$?) { exit 1 }
 ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG1_SEN_MULTI OpenKNX-REG1-MultiSensor uf2
 if (!$?) { exit 1 }
 
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG2_PIPICO_V1 OpenKNX-REG2-PiPico-V1 uf2
+# ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG2_PIPICO_V1 OpenKNX-REG2-PiPico-V1 uf2
+# if (!$?) { exit 1 }
+
+# ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG2_PIPICO_W_V1 OpenKNX-REG2-PiPico-W-V1 uf2
+# if (!$?) { exit 1 }
+
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_SMARTMF_2SML_3BE Smart-MF-eHZ-Schnittstelle uf2
 if (!$?) { exit 1 }
 
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG2_PIPICO_W_V1 OpenKNX-REG2-PiPico-W-V1 uf2
-if (!$?) { exit 1 }
-
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_SMARTMF_2SML_3BE Smart-MF-S0-Zaehlermodul uf2
-if (!$?) { exit 1 }
-
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_SMARTMF_1TE_BE_3CH Smart-MF-eHZ-Schnittstelle uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_SMARTMF_1TE_BE_3CH Smart-MF-S0-Zaehlermodul uf2
 if (!$?) { exit 1 }
 
 

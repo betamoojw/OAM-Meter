@@ -149,15 +149,10 @@
     </header>
     <main>
         <p>
-            Hier wird aufgeführt, welche Geräte aktuell unterstützt werden. Zusätzlich können verschiedene
-            Firmware-Varianten
-            verfügbar sein, um unterschiedliche Hardwarekonfigurationen auf denselben Geräten zu ermöglichen.
-            Beispielsweise
-            verfügt das REG1 über eine Onboard-Schnittstelle, die wahlweise als zweifacher Binäreingang oder als
-            SML-Eingang
-            genutzt werden kann. Die Spalten zeigen dabei, welcher Kanal in der ETS welcher Schnittstelle zugeordnet
-            wurde.
-        </p>
+            Hier wird aufgeführt, welche Geräte aktuell mit dieser OpenKNX-Applikation genutzt werden können. Dabei ist
+            zu beachten, dass die Geräte unterschiedliche Schnittstellen besitzen. Die Tabelle bietet daher auch einen
+            Überblick darüber, welcher Kanal in der ETS mit welcher physikalischen Schnittstelle verbunden ist. Kanäle
+            ohne Verknüpfung bleiben dabei funktionslos.</p>
 
 
         <table width="100%" border="1" cellspacing="0" cellpadding="5">
@@ -173,22 +168,20 @@
                     <th align="left">SML1</th>
                     <th align="left">SML2</th>
                     <th align="left">SML3</th>
-                    <th align="left">Notiz</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>OpenKNX PiPico BCU Connector</td>
                     <td>PiPico-BCU-Connector</td>
+                    <td>GPIO 2</td>
                     <td>GPIO 3</td>
                     <td>GPIO 4</td>
                     <td>GPIO 5</td>
-                    <td>GPIO 9</td>
-                    <td>GPIO 10</td>
-                    <td>TX 27 - RX 28</td>
-                    <td>TX 22 - RX 26</td>
-                    <td>TX 20 - RX 21</td>
-                    <td></td>
+                    <td>GPIO 6</td>
+                    <td>TX 8 - RX 9</td>
+                    <td>TX 10 - RX 11</td>
+                    <td>TX 26 - RX 27</td>
                 </tr>
                 <tr>
                     <td>OpenKNX UP1 8xSensor</td>
@@ -201,7 +194,6 @@
                     <td>TX D1 - RX D2</td>
                     <td>TX E1 - RX E2</td>
                     <td>TX F1 - RX F2</td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>OpenKNX REG1 Basismodul V0</td>
@@ -214,7 +206,6 @@
                     <td>Onboard</td>
                     <td>-</td>
                     <td>-</td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>OpenKNX REG1 Basismodul</td>
@@ -227,7 +218,6 @@
                     <td>Onboard</td>
                     <td>-</td>
                     <td>-</td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>OpenKNX REG1 MultiSensor</td>
@@ -237,11 +227,10 @@
                     <td>Platine: Voderer</td>
                     <td>Platine: Mittlerer</td>
                     <td>Platine: Hinterer</td>
-                    <td>Onboard</td> 
+                    <td>Onboard</td>
                     <td>Platine: Voderer</td>
                     <td>Platine: Hinterer</td>
-                    <td></td>
-                </tr>
+                </tr><!--
                 <tr>
                     <td>OpenKNX REG2 PiPico V1</td>
                     <td>XXX</td>
@@ -253,7 +242,6 @@
                     <td>TX 4 - RX 5</td>
                     <td>TX 6 - RX 7</td>
                     <td>-</td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>OpenKNX REG2 PiPico W V1</td>
@@ -266,8 +254,7 @@
                     <td>TX 4 - RX 5</td>
                     <td>TX 6 - RX 7</td>
                     <td>-</td>
-                    <td></td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td>Smart-MF S0-Zählermodul</td>
                     <td>SMARTMF-1TE-BE-3CH</td>
@@ -279,7 +266,6 @@
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>Smart-MF eHZ Schnittstelle</td>
@@ -292,14 +278,21 @@
                     <td>Links</td>
                     <td>Rechts</td>
                     <td>-</td>
-                    <td></td>
                 </tr>
             </tbody>
         </table>
 
+        <h2>Verkabelung</h2>
+        <p>
+            Die Verkabelung der meisten Geräte ist standardisiert und kann im Wiki auf den jeweiligen Gerätedetailseiten
+            eingesehen werden. Grundsätzlich gilt: Falls nicht anders angegeben, sind Binäreingänge gegen GND zu
+            schalten.
+        </p>
     </main>
     <footer>
-        <p><a href="http://www.openknx.de" target="_blank"><b>www.OpenKNX.de</b></a></p>
+        <p><a href="http://www.openknx.de" target="_blank">www.OpenKNX.de</a> &bull; <a href="http://wiki.openknx.de"
+                target="_blank">wiki.OpenKNX.de</a> &bull; <a href="http://forum.openknx.de"
+                target="_blank">forum.OpenKNX.de</a></p>
     </footer>
 </body>
 

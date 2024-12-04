@@ -4,12 +4,14 @@
 #define FIRMWARE_NAME "Zaehlermodul"
 
 #ifdef DEVICE_PIPICO_BCU_CONNECTOR
-    #define OPENKNX_BI_GPIO_PINS 3, 4, 5, 9, 10
+// Pin 14+15 und SPI1 kann später für das I2C Display genutzt werden
+
+    #define OPENKNX_BI_GPIO_PINS 2, 3, 4, 5, 6
     #define OPENKNX_BI_GPIO_COUNT 5
     #define OPENKNX_BI_PULSE -1
     #define OPENKNX_BI_PULSE_PAUSE_TIME 0
     #define OPENKNX_BI_PULSE_WAIT_TIME 0
-    #define OPENKNX_BI_ONLEVEL HIGH
+    #define OPENKNX_BI_ONLEVEL LOW
 #endif
 
 #ifdef DEVICE_SEN_UP1_8XTH
@@ -18,7 +20,7 @@
     #define OPENKNX_BI_PULSE -1
     #define OPENKNX_BI_PULSE_PAUSE_TIME 0
     #define OPENKNX_BI_PULSE_WAIT_TIME 0
-    #define OPENKNX_BI_ONLEVEL HIGH
+    #define OPENKNX_BI_ONLEVEL LOW
 #endif
 
 #ifdef DEVICE_REG1_SEN_MULTI
