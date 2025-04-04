@@ -5,18 +5,19 @@
   <op:config name="%BASE_PeriodicSave%" value="1" />
   <op:config name="%LOG_NumChannelsDefault%" value="5" />
   <op:config name="%MTR_NumChannelsDefault%" value="5" />
+  <op:config name="%BI_NumChannelsDefault%" value="3" />
   <op:ETS
     OpenKnxId="0xA3"
-    ApplicationNumber="0x04"
+    ApplicationNumber="0x06"
     ApplicationVersion="4"
     ReplacesVersions="3 2 1"
     ApplicationRevision="0"
-    ProductName="Zählermodul"
+    ProductName="Zählermodul-IP"
     BusCurrent="10"
     BuildSuffix="-Beta"
     BuildSuffixText=" (Beta)"
-    OrderNumber="OpenKnxMeter"
-    ApplicationName="OpenKnxMeter" />
+    OrderNumber="OpenKnxMeterIP"
+    ApplicationName="OpenKnxMeterIP" />
 
   <op:define prefix="BASE" ModuleType="10"
     share="../lib/OGM-Common/src/Common.share.xml">
@@ -25,6 +26,11 @@
 
   <op:define prefix="OAM" ModuleType="99"
     share="../src/MeterModule.base.xml">
+  </op:define>
+
+  <op:define prefix="NET" ModuleType="11"
+    share="../lib/OFM-Network/src/Network.share.xml">
+    <op:verify File="../lib/OFM-Network/library.json" ModuleVersion="0.4" />
   </op:define>
 
   <op:define prefix="UCT" ModuleType="19"
@@ -36,20 +42,20 @@
     share="../lib/OFM-Meter/src/MeterModule.share.xml"
     template="../lib/OFM-Meter/src/MeterModule.templ.xml"
     NumChannels="20" KoOffset="400">
-    <op:verify File="../lib/OFM-Meter/library.json" ModuleVersion="0.2" /> 
+    <op:verify File="../lib/OFM-Meter/library.json" ModuleVersion="0.3" /> 
   </op:define>
 
   <op:define prefix="SML" ModuleType="21"
     share="../lib/OFM-SML/src/SMLModule.share.xml"
     template="../lib/OFM-SML/src/SMLModule.templ.xml"
-    NumChannels="3" KoOffset="500">
+    NumChannels="2" KoOffset="500">
     <op:verify File="../lib/OFM-SML/library.json" ModuleVersion="0.1" /> 
   </op:define>
   
   <op:define prefix="BI" ModuleType="40"
     share="../lib/OFM-BinaryInput/src/BinaryInputChannel.share.xml"
     template="../lib/OFM-BinaryInput/src/BinaryInputChannel.templ.xml"
-    NumChannels="5" KoOffset="41">
+    NumChannels="3" KoOffset="41">
     <op:verify File="../lib/OFM-BinaryInput/library.json" ModuleVersion="0.2" /> 
   </op:define>
 

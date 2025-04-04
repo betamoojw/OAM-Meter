@@ -16,7 +16,7 @@
 
 void setup()
 {
-    const uint8_t firmwareRevision = 0;
+    const uint8_t firmwareRevision = 2;
     openknx.init(firmwareRevision);
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxMeterModule);
@@ -78,8 +78,8 @@ void setup()
 
     pinMode(SMARTMF_SML1_TX_PIN, OUTPUT);
     digitalWrite(SMARTMF_SML1_TX_PIN, HIGH);
-
     openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(SerialPIO::NOPIN, SMARTMF_SML1_RX_PIN, PIO_BUFFER));
+
     pinMode(SMARTMF_SML2_TX_PIN, OUTPUT);
     digitalWrite(SMARTMF_SML2_TX_PIN, HIGH);
     openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(SerialPIO::NOPIN, SMARTMF_SML2_RX_PIN, PIO_BUFFER));
@@ -92,7 +92,7 @@ void setup()
 
     pinMode(OKNXHW_REG2_MSENS_2_SDA1_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG2_MSENS_2_SDA1_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(SerialPIO::NOPIN, OKNXHW_REG2_MSENS_2_SCL1_RX_PIN, PIO_BUFFER));
+    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(SerialPIO::NOPIN, OKNXHW_REG2_MSENS_2_SCL1_RX_PIN, PIO_BUFFER));
 
 #endif
 }

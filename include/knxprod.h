@@ -10,17 +10,17 @@
                                              
 #define MAIN_OpenKnxId 0xA3
 #define MAIN_ApplicationNumber 4
-#define MAIN_ApplicationVersion 3
+#define MAIN_ApplicationVersion 4
 #define MAIN_ParameterSize 13885
 #define MAIN_MaxKoNumber 839
 #define MAIN_OrderNumber "OpenKnxMeter"
-#define BASE_ModuleVersion 18
+#define BASE_ModuleVersion 19
 #define UCT_ModuleVersion 2
 #define MTR_ModuleVersion 2
 #define SML_ModuleVersion 1
 #define BI_ModuleVersion 2
 #define BTN_ModuleVersion 5
-#define LOG_ModuleVersion 52
+#define LOG_ModuleVersion 53
 // Parameter with single occurrence
 
 
@@ -74,6 +74,9 @@
 #define BASE_HeartbeatExtended                   14      // 1 Bit, Bit 4
 #define     BASE_HeartbeatExtendedMask 0x10
 #define     BASE_HeartbeatExtendedShift 4
+#define BASE_InternalTime                        14      // 1 Bit, Bit 3
+#define     BASE_InternalTimeMask 0x08
+#define     BASE_InternalTimeShift 3
 #define BASE_ManualSave                          14      // 3 Bits, Bit 2-0
 #define     BASE_ManualSaveMask 0x07
 #define     BASE_ManualSaveShift 0
@@ -120,6 +123,8 @@
 #define ParamBASE_ReadTimeDate                        ((bool)(knx.paramByte(BASE_ReadTimeDate) & BASE_ReadTimeDateMask))
 // Erweitertes "In Betrieb"
 #define ParamBASE_HeartbeatExtended                   ((bool)(knx.paramByte(BASE_HeartbeatExtended) & BASE_HeartbeatExtendedMask))
+// InternalTime
+#define ParamBASE_InternalTime                        ((bool)(knx.paramByte(BASE_InternalTime) & BASE_InternalTimeMask))
 // Manuelles speichern
 #define ParamBASE_ManualSave                          (knx.paramByte(BASE_ManualSave) & BASE_ManualSaveMask)
 // Zyklisches speichern
@@ -133,6 +138,7 @@
 #define BASE_KoDiagnose 7
 #define BASE_KoIsSummertime 10
 #define BASE_KoManualSave 11
+#define BASE_KoDateTime 12
 
 // In Betrieb
 #define KoBASE_Heartbeat                           (knx.getGroupObject(BASE_KoHeartbeat))
@@ -146,6 +152,8 @@
 #define KoBASE_IsSummertime                        (knx.getGroupObject(BASE_KoIsSummertime))
 // Speichern
 #define KoBASE_ManualSave                          (knx.getGroupObject(BASE_KoManualSave))
+// Uhrzeit/Datum
+#define KoBASE_DateTime                            (knx.getGroupObject(BASE_KoDateTime))
 
 
 
@@ -2366,9 +2374,9 @@
 #define LOG_fOOutputFilter                      53      // 2 Bits, Bit 4-3
 #define     LOG_fOOutputFilterMask 0x18
 #define     LOG_fOOutputFilterShift 3
-#define LOG_fOSendOnChange                      53      // 1 Bit, Bit 3
-#define     LOG_fOSendOnChangeMask 0x08
-#define     LOG_fOSendOnChangeShift 3
+#define LOG_fOSendOnChange                      53      // 1 Bit, Bit 2
+#define     LOG_fOSendOnChangeMask 0x04
+#define     LOG_fOSendOnChangeShift 2
 #define LOG_fODpt                               54      // 8 Bits, Bit 7-0
 #define LOG_fOOn                                55      // 8 Bits, Bit 7-0
 #define LOG_fOOnBuzzer                          55      // 8 Bits, Bit 7-0
