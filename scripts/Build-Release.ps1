@@ -47,6 +47,9 @@ if (!$?) { exit 1 }
 ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG1_BASE OpenKNX-REG1-Basismodul uf2
 if (!$?) { exit 1 }
 
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG1_BASE_IP OpenKNX-REG1-Basismodul-IP uf2
+if (!$?) { exit 1 }
+
 ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG1_SEN_MULTI OpenKNX-REG1-MultiSensor uf2
 if (!$?) { exit 1 }
 

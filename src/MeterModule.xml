@@ -5,17 +5,19 @@
   <op:config name="%BASE_PeriodicSave%" value="1" />
   <op:config name="%LOG_NumChannelsDefault%" value="5" />
   <op:config name="%MTR_NumChannelsDefault%" value="5" />
+  <op:config name="%NET_ShowMediumInfo%" value="1" />
   <op:ETS
     OpenKnxId="0xA3"
     ApplicationNumber="0x04"
-    ApplicationVersion="4"
-    ReplacesVersions="3 2 1"
+    ApplicationVersion="5"
+    ReplacesVersions="4 3 2 1"
     ApplicationRevision="0"
     ProductName="Zählermodul"
     BusCurrent="10"
     BuildSuffix="-Beta"
     BuildSuffixText=" (Beta)"
     OrderNumber="OpenKnxMeter"
+    MediumTypes="MT-0 MT-5"
     ApplicationName="OpenKnxMeter" />
 
   <op:define prefix="BASE" ModuleType="10"
@@ -27,6 +29,11 @@
     share="../src/MeterModule.base.xml">
   </op:define>
 
+  <op:define prefix="NET" ModuleType="11"
+    share="../lib/OFM-Network/src/Network.share.xml">
+    <op:verify File="../lib/OFM-Network/library.json" ModuleVersion="0.4" />
+  </op:define>
+
   <op:define prefix="UCT" ModuleType="19"
     share="../lib/OFM-ConfigTransfer/src/ConfigTransfer.share.xml">
     <op:verify File="../lib/OFM-ConfigTransfer/library.json" ModuleVersion="0.2" />
@@ -36,7 +43,7 @@
     share="../lib/OFM-Meter/src/MeterModule.share.xml"
     template="../lib/OFM-Meter/src/MeterModule.templ.xml"
     NumChannels="20" KoOffset="400">
-    <op:verify File="../lib/OFM-Meter/library.json" ModuleVersion="0.2" /> 
+    <op:verify File="../lib/OFM-Meter/library.json" ModuleVersion="0.5" /> 
   </op:define>
 
   <op:define prefix="SML" ModuleType="21"
