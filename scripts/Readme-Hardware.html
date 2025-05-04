@@ -158,16 +158,20 @@
         <table width="100%" border="1" cellspacing="0" cellpadding="5">
             <thead>
                 <tr>
-                    <th align="left">Geräte-Name</th>
-                    <th align="left">Geräte-ID</th>
-                    <th align="left">BE1</th>
-                    <th align="left">BE2</th>
-                    <th align="left">BE3</th>
-                    <th align="left">BE4</th>
-                    <th align="left">BE5</th>
-                    <th align="left">SML1</th>
-                    <th align="left">SML2</th>
-                    <th align="left">SML3</th>
+                    <th align="left" valign="top" rowspan="2">Geräte-Name</th>
+                    <th align="left" valign="top" rowspan="2">Geräte-ID</th>
+                    <th align="left" colspan="5">Binäreingang</th>
+                    <th align="left" colspan="3">SML-Eingänge</th>
+                </tr>
+                <tr>
+                    <th align="left">A</th>
+                    <th align="left">B</th>
+                    <th align="left">C</th>
+                    <th align="left">D</th>
+                    <th align="left">E</th>
+                    <th align="left">A</th>
+                    <th align="left">B</th>
+                    <th align="left">C</th>
                 </tr>
             </thead>
             <tbody>
@@ -234,14 +238,14 @@
                 <tr>
                     <td>OpenKNX REG1 MultiSensor</td>
                     <td>REG1-SEN-Multi</td>
+                    <td>A (6er Schraubklemme)</td>
+                    <td>B (6er Schraubklemme)</td>
+                    <td>C (6er Schraubklemme)</td>
                     <td>-</td>
                     <td>-</td>
-                    <td>Platine: Voderer</td>
-                    <td>Platine: Mittlerer</td>
-                    <td>Platine: Hinterer</td>
-                    <td>Platine: Voderer</td>
-                    <td>Platine: Hinterer</td>
-                    <td>Onboard</td>
+                    <td>A (RJ10)</td>
+                    <td>B (RJ10)</td>
+                    <td>C (4er Schraubklemme)</td>
                 </tr>
                 <tr>
                     <td>OpenKNX REG2 PiPico V1 DeviceDisplay Meter</td>
@@ -281,6 +285,7 @@
                 </tr>
             </tbody>
         </table>
+        <p>Positionsangaben gelten für den eingebauten Zustand und die Draufsicht. Details findest du in der entsprechenden Gerätedokumentation.</p>
 
         <h2>Verkabelung</h2>
         <p>
