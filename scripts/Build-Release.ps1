@@ -68,6 +68,10 @@ if (!$?) { exit 1 }
 # if (!$?) { exit 1 }
 # }
 
+# cleanup unneeded files
+Remove-Item -Path release/OTA-Upload-Firmware-*.ps1 -Exclude *OpenKNX-REG1-Basismodul-IP* -ErrorAction SilentlyContinue -Force
+Remove-Item -Path release/KNX-Upload-Firmware-OpenKNX-REG1-Basismodul-IP.ps1 -ErrorAction SilentlyContinue -Force
+
 # build firmware based on generated headerfile for SAMD
 # ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_SAMD_v31 firmware-v31 bin
 # if (!$?) { exit 1 }
