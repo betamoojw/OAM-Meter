@@ -1,13 +1,18 @@
-#include "FileTransferModule.h"
+
 #include "GpioBinaryInputModule.h"
 #include "Logic.h"
 #include "MeterModule.h"
 #include "NetworkModule.h"
 #include "OpenKNX.h"
-#include "SMLModule.h"
 #include "UsbExchangeModule.h"
 #include "VirtualButtonModule.h"
-#include <SoftwareSerial.h>
+#ifndef OPENKNX_FILE_TRANSFER_IGNORE
+    #include "FileTransferModule.h"
+#endif
+#ifndef ARDUINO_ARCH_ESP32
+    #include "SMLModule.h"
+    #include <SoftwareSerial.h>
+#endif
 
 #ifdef SML_TEST_STRINGS
     #include "SMLSamples.h"
@@ -17,11 +22,13 @@
 
 void setup()
 {
-    const uint8_t firmwareRevision = 0;
+    const uint8_t firmwareRevision = 1;
     openknx.init(firmwareRevision);
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxMeterModule);
+#ifndef ARDUINO_ARCH_ESP32
     openknx.addModule(3, openknxSMLModule);
+#endif
 #if defined(OPENKNX_BI_GPIO_PINS) && OPENKNX_BI_GPIO_COUNT > 0 && BI_ChannelCount > 0
     openknx.addModule(6, openknxGpioBinaryInputModule);
 #endif
@@ -29,13 +36,18 @@ void setup()
     openknx.addModule(10, openknxNetwork);
 #endif
     openknx.addModule(7, openknxVirtualButtonModule);
+
+#ifndef ARDUINO_ARCH_ESP32
     openknx.addModule(8, openknxUsbExchangeModule);
+#endif
+#ifndef OPENKNX_FILE_TRANSFER_IGNORE
     openknx.addModule(9, openknxFileTransferModule);
+#endif
 
     openknx.setup();
 
 #if defined(INFO3_LED_PIN)
-    openknx.info3Led.activity(openknxSMLModule.lastReceived);
+//    openknx.info3Led.activity(openknxSMLModule.lastReceived);
 #elif defined(INFO1_LED_PIN)
     openknx.info1Led.activity(openknxSMLModule.lastReceived);
 #endif
