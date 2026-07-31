@@ -4,6 +4,16 @@ OAM-Meter ist keine eigene OFM-Bibliothek, sondern die konkrete
 Geräte-Applikation ("Zählermodul"), die mehrere OpenKNX-Funktionsmodule
 (OFM) zu fertigen Firmwares für unterschiedliche Hardware zusammenbaut.
 
+## Basis: OGM-Common
+
+Alle Module hier (inkl. dieser Applikation selbst) bauen auf
+[lib/OGM-Common/AGENTS.md](lib/OGM-Common/AGENTS.md) auf — Modulsystem,
+LED-/Flash-/Zeit-API, Logging, Embedded-Rahmenbedingungen und
+Code-Konventionen sind dort beschrieben und gelten hier unverändert
+mit. Vorhandene Claude-Skills/Agents aus OGM-Common (z. B.
+`.claude/agents/openknx-channelselect.md` für das Kanalauswahl-Muster)
+gelten ebenso für dieses Projekt.
+
 ## Aufbau
 
 - `src/main.cpp` — einziger Applikationscode. `setup()` registriert die
@@ -49,3 +59,9 @@ das die physischen LED-Objekte erst registriert).
    ergänzen.
 6. ETS-Producer laufen lassen (VSCode-Task "OpenKNXproducer (Dev)"), um
    `include/knxprod.h` und `src/MeterModule-Dev.xml` zu regenerieren.
+
+## Referenzen
+
+- [README.md](README.md) — Funktionsüberblick
+- [scripts/Readme-Hardware.html](scripts/Readme-Hardware.html) — Pin-Belegung pro Gerät
+- [CHANGELOG.md](CHANGELOG.md) — Versionshistorie
