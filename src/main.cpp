@@ -38,6 +38,9 @@ void setup()
 #if defined(DEVICE_REG1_BASE_V0) || defined(DEVICE_REG1_BASE) || defined(DEVICE_REG1_SEN_MULTI) || defined(DEVICE_REG1_LAN_SEN_MULTI)
         openknx.ledFunctions.assignLed2Function(openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3), 200); // SML Gesamtstatus
         openknx.ledFunctions.assignLed2Function(openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2), 600); // BI Status
+#elif defined(DEVICE_REG1_GW_RF868M)
+        openknx.ledFunctions.assignLed2Function(openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3), 200); // SML Gesamtstatus
+        openknx.ledFunctions.assignLed2Function(openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2), 220); // WMBus Gesamtstatus
 #endif
     }
 
@@ -101,7 +104,17 @@ void setup()
 
     pinMode(OKNXHW_REG1_SENSOR_SDA_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG1_SENSOR_SDA_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, 9, SML_BUFFER)); // Onboard
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG1_SENSOR_SCL_RX_PIN, SML_BUFFER)); // Onboard
+
+#elif defined(DEVICE_REG1_GW_RF868M)
+
+    pinMode(OKNXHW_REG1_SENSOR_SDA_TX_PIN, OUTPUT);
+    digitalWrite(OKNXHW_REG1_SENSOR_SDA_TX_PIN, HIGH);
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG1_SENSOR_SCL_RX_PIN, SML_BUFFER)); // SML A (onboard)
+
+    pinMode(OKNXHW_REG1_APP_GW_RF868M_SDA_TX_PIN, OUTPUT);
+    digitalWrite(OKNXHW_REG1_APP_GW_RF868M_SDA_TX_PIN, HIGH);
+    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG1_APP_GW_RF868M_SCL_RX_PIN, SML_BUFFER)); // SML B (unten)
 
 #elif defined(DEVICE_REG1_SEN_MULTI)
 
@@ -115,7 +128,7 @@ void setup()
 
     pinMode(OKNXHW_REG1_SENSOR_SDA_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG1_SENSOR_SDA_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(2)->setSerial(new SerialPIO(NOPIN, 9, SML_BUFFER)); // Onboard
+    openknxSMLModule.getChannel(2)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG1_SENSOR_SCL_RX_PIN, SML_BUFFER)); // Onboard
 
 #elif defined(DEVICE_REG1_LAN_SEN_MULTI)
     Serial1.setRxBufferSize(SML_BUFFER);
