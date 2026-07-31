@@ -53,6 +53,9 @@ if (!$?) { exit 1 }
 ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG1_SEN_MULTI OpenKNX-REG1-MultiSensor rp2040-tp
 if (!$?) { exit 1 }
 
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG1_LAN_SEN_MULTI OpenKNX-REG1-LAN-MultiSensor esp32-ip
+if (!$?) { exit 1 }
+
 ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG2_PIPICO_V1_DD_METER OpenKNX-REG2-PiPico-V1-DeviceDisplay-Meter rp2040-tp
 if (!$?) { exit 1 }
 

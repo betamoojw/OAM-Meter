@@ -29,11 +29,19 @@ void setup()
     // das ins Leere und die LED bleibt bis zur nächsten Statusänderung aus.
     if (openknx.ledFunctions.useDefaultFunction())
     {
-#if defined(DEVICE_PIPICO_BCU_CONNECTOR) || defined(DEVICE_SEN_UP1_8XTH) || defined(DEVICE_REG1_BASE_V0) || defined(DEVICE_REG1_BASE) || defined(DEVICE_REG1_SEN_MULTI)
+#if defined(DEVICE_REG1_BASE_V0) || defined(DEVICE_REG1_BASE) || defined(DEVICE_REG1_SEN_MULTI) || defined(DEVICE_REG1_LAN_SEN_MULTI)
         openknx.ledFunctions.assignLed2Function(openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3), 200); // SML Gesamtstatus
         openknx.ledFunctions.assignLed2Function(openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2), 600); // BI Status
 #endif
     }
+
+#if defined(DEVICE_SMARTMF_2SML_3BE)
+    openknx.ledFunctions.assignLed2Function(openknx.leds.getLed(OpenKNX::Led::LED_TYPE_USER + 1), 701); // BE1
+    openknx.ledFunctions.assignLed2Function(openknx.leds.getLed(OpenKNX::Led::LED_TYPE_USER + 2), 702); // BE2
+    openknx.ledFunctions.assignLed2Function(openknx.leds.getLed(OpenKNX::Led::LED_TYPE_USER + 3), 703); // BE3
+    openknx.ledFunctions.assignLed2Function(openknx.leds.getLed(OpenKNX::Led::LED_TYPE_USER + 4), 202); // SML02!
+    openknx.ledFunctions.assignLed2Function(openknx.leds.getLed(OpenKNX::Led::LED_TYPE_USER + 5), 201); // SML01!
+#endif
 
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxMeterModule);
@@ -91,6 +99,25 @@ void setup()
     digitalWrite(OKNXHW_REG1_SENSOR_SDA_TX_PIN, HIGH);
     openknxSMLModule.getChannel(2)->setSerial(new SerialPIO(NOPIN, 9, PIO_BUFFER)); // Onboard
 
+#elif defined(DEVICE_REG1_LAN_SEN_MULTI)
+    Serial1.setRxBufferSize(PIO_BUFFER);
+    Serial1.setPins(OKNXHW_REG1_APP_SEN_MULTI_SENSOR1_SCL_RX_PIN, OKNXHW_REG1_APP_SEN_MULTI_SENSOR1_SDA_TX_PIN);
+    openknxSMLModule.getChannel(0)->setSerial(&Serial1); // SML Platine A (oben)
+
+    Serial2.setRxBufferSize(PIO_BUFFER);
+    Serial2.setPins(OKNXHW_REG1_APP_SEN_MULTI_SENSOR2_SCL_RX_PIN, OKNXHW_REG1_APP_SEN_MULTI_SENSOR2_SDA_TX_PIN);
+    openknxSMLModule.getChannel(1)->setSerial(&Serial2); // SML Platine B (unten)
+
+#elif defined(DEVICE_REG2_PIPICO_V1_DD_METER)
+
+    pinMode(OKNXHW_REG2_MSENS_1_SDA0_TX_PIN, OUTPUT);
+    digitalWrite(OKNXHW_REG2_MSENS_1_SDA0_TX_PIN, HIGH);
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG2_MSENS_1_SCL0_RX_PIN, PIO_BUFFER));
+
+    pinMode(OKNXHW_REG2_MSENS_2_SDA1_TX_PIN, OUTPUT);
+    digitalWrite(OKNXHW_REG2_MSENS_2_SDA1_TX_PIN, HIGH);
+    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG2_MSENS_2_SCL1_RX_PIN, PIO_BUFFER));
+
 #elif defined(DEVICE_SMARTMF_1TE_BE_3CH)
 
     pinMode(SMARTMF_BE_VCC_PIN, OUTPUT);
@@ -108,16 +135,6 @@ void setup()
     pinMode(SMARTMF_SML2_TX_PIN, OUTPUT);
     digitalWrite(SMARTMF_SML2_TX_PIN, HIGH);
     openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, SMARTMF_SML2_RX_PIN, PIO_BUFFER));
-
-#elif defined(DEVICE_REG2_PIPICO_V1_DD_METER)
-
-    pinMode(OKNXHW_REG2_MSENS_1_SDA0_TX_PIN, OUTPUT);
-    digitalWrite(OKNXHW_REG2_MSENS_1_SDA0_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG2_MSENS_1_SCL0_RX_PIN, PIO_BUFFER));
-
-    pinMode(OKNXHW_REG2_MSENS_2_SDA1_TX_PIN, OUTPUT);
-    digitalWrite(OKNXHW_REG2_MSENS_2_SDA1_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG2_MSENS_2_SCL1_RX_PIN, PIO_BUFFER));
 
 #endif
 }
