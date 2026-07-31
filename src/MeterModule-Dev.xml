@@ -11,7 +11,7 @@
   <op:ETS
     OpenKnxId="0xAF"
     ApplicationNumber="0x05"
-    ApplicationVersion="10.7.0"
+    ApplicationVersion="10.8.0"
     ReplacesVersionsDownTo="3"
     ApplicationRevision="0"
     ProductName="Zählermodul"
@@ -33,7 +33,7 @@
 
   <op:define prefix="NET" ModuleType="11"
     share="../lib/OFM-Network/src/Network.share.xml">
-    <op:verify File="../lib/OFM-Network/library.json" ModuleVersion="0.6" />
+    <op:verify File="../lib/OFM-Network/library.json" ModuleVersion="0.7" />
   </op:define>
 
   <op:define prefix="UCT" ModuleType="19"
@@ -45,14 +45,14 @@
     share="../lib/OFM-Meter/src/MeterModule.share.xml"
     template="../lib/OFM-Meter/src/MeterModule.templ.xml"
     NumChannels="20" KoOffset="400">
-    <op:verify File="../lib/OFM-Meter/library.json" ModuleVersion="0.6" /> 
+    <op:verify File="../lib/OFM-Meter/library.json" ModuleVersion="0.7" /> 
   </op:define>
 
   <op:define prefix="SML" ModuleType="21"
     share="../lib/OFM-SML/src/SMLModule.share.xml"
     template="../lib/OFM-SML/src/SMLModule.templ.xml"
     NumChannels="3" KoOffset="500">
-    <op:verify File="../lib/OFM-SML/library.json" ModuleVersion="0.2" /> 
+    <op:verify File="../lib/OFM-SML/library.json" ModuleVersion="0.3" /> 
   </op:define>
 
   <op:define prefix="MBUS" ModuleType="22"
@@ -66,14 +66,14 @@
     share="../lib/OFM-BinaryInput/src/BinaryInputChannel.share.xml"
     template="../lib/OFM-BinaryInput/src/BinaryInputChannel.templ.xml"
     NumChannels="5" KoOffset="41">
-    <op:verify File="../lib/OFM-BinaryInput/library.json" ModuleVersion="0.3" /> 
+    <op:verify File="../lib/OFM-BinaryInput/library.json" ModuleVersion="0.4" /> 
   </op:define>
 
   <op:define prefix="BTN" ModuleType="30"
     share="../lib/OFM-VirtualButton/src/VirtualButton.share.xml"
     template="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml"
     NumChannels="20" KoOffset="600">
-    <op:verify File="../lib/OFM-VirtualButton/library.json" ModuleVersion="0.6" /> 
+    <op:verify File="../lib/OFM-VirtualButton/library.json" ModuleVersion="0.7" /> 
   </op:define>
 
   <op:define prefix="LOG" ModuleType="10"
