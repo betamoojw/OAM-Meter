@@ -1,14 +1,14 @@
 ﻿------- Built with -------
 7124a64 v1 lib/knx https://github.com/OpenKNX/knx.git
-19e648c v1dev-new-channel-select lib/OFM-BinaryInput https://github.com/OpenKNX/OFM-BinaryInput.git
+5bf7640 v1dev lib/OFM-BinaryInput https://github.com/OpenKNX/OFM-BinaryInput.git
 eca6977 v1 lib/OFM-ConfigTransfer https://github.com/OpenKNX/OFM-ConfigTransfer.git
 178f186 v1 lib/OFM-FileTransferModule https://github.com/OpenKNX/OFM-FileTransferModule.git
 07ecf15 v1dev-new-channel-select lib/OFM-LogicModule https://github.com/OpenKNX/OFM-LogicModule.git
-793bb08 v1dev-new-channel-select lib/OFM-Meter https://github.com/OpenKNX/OFM-Meter.git
+5f57f7c v1dev lib/OFM-Meter https://github.com/OpenKNX/OFM-Meter.git
 7736cfb v1dev-hotshit lib/OFM-Network https://github.com/OpenKNX/OFM-Network.git
-445ce6a v1dev-new-channel-select lib/OFM-SML https://github.com/OpenKNX/OFM-SML.git
+8bafa54 v1dev lib/OFM-SML https://github.com/OpenKNX/OFM-SML.git
 55119fc v1 lib/OFM-UsbExchange https://github.com/OpenKNX/OFM-UsbExchange.git
-9ea99b5 v1dev-new-channel-select lib/OFM-VirtualButton https://github.com/OpenKNX/OFM-VirtualButton.git
-c191cdc v1dev lib/OFM-WirelessMBus 
-70a0175 v1dev lib/OGM-Common https://github.com/OpenKNX/OGM-Common.git
+8874085 v1dev lib/OFM-VirtualButton https://github.com/OpenKNX/OFM-VirtualButton.git
+5e2da60 v1dev lib/OFM-WirelessMBus 
+0358567 v1dev lib/OGM-Common https://github.com/OpenKNX/OGM-Common.git
 a9e034d v1 lib/OGM-HardwareConfig https://github.com/OpenKNX/OGM-HardwareConfig.git

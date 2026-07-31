@@ -22,7 +22,7 @@
 #define MAIN_FirmwareName "Zaehlermodul (Dev)"
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 5
-#define MAIN_ApplicationVersion 158
+#define MAIN_ApplicationVersion 167
 #define MAIN_FirmwareRevision 0
 #define MAIN_ApplicationEncoding iso-8859-15
 #define MAIN_ParameterSize 7952
@@ -482,6 +482,9 @@
 #define SML_cSuspended                           2      // 1 Bit, Bit 1
 #define     SML_cSuspendedMask 0x02
 #define     SML_cSuspendedShift 1
+#define SML_cShowMeterStatus                     2      // 1 Bit, Bit 0
+#define     SML_cShowMeterStatusMask 0x01
+#define     SML_cShowMeterStatusShift 0
 #define SML_cCounterChangeV                      3      // uint16_t
 #define SML_cPowerSumChangeV                     5      // uint16_t
 #define SML_cPowerChangeV                        7      // uint16_t
@@ -557,7 +560,7 @@
 #define ParamSML_cVoltage                            ((bool)(knx.paramByte(SML_ParamCalcIndex(SML_cVoltage)) & SML_cVoltageMask))
 // Aktiv
 #define ParamSML_cFrequency                          ((bool)(knx.paramByte(SML_ParamCalcIndex(SML_cFrequency)) & SML_cFrequencyMask))
-// Aktiv
+// Identifikationsnummer
 #define ParamSML_cIdentifikation                     ((bool)(knx.paramByte(SML_ParamCalcIndex(SML_cIdentifikation)) & SML_cIdentifikationMask))
 // Aktiv
 #define ParamSML_cCounterWh                          ((bool)(knx.paramByte(SML_ParamCalcIndex(SML_cCounterWh)) & SML_cCounterWhMask))
@@ -575,6 +578,8 @@
 #define ParamSML_cFrequencyChange                    ((bool)(knx.paramByte(SML_ParamCalcIndex(SML_cFrequencyChange)) & SML_cFrequencyChangeMask))
 // Suspendiert
 #define ParamSML_cSuspended                          ((bool)(knx.paramByte(SML_ParamCalcIndex(SML_cSuspended)) & SML_cSuspendedMask))
+// Statuswort
+#define ParamSML_cShowMeterStatus                    ((bool)(knx.paramByte(SML_ParamCalcIndex(SML_cShowMeterStatus)) & SML_cShowMeterStatusMask))
 // 
 #define ParamSML_cCounterChangeV                     (knx.paramWord(SML_ParamCalcIndex(SML_cCounterChangeV)))
 // 
@@ -641,7 +646,7 @@
 
 // Communication objects per channel (multiple occurrence)
 #define SML_KoBlockOffset 500
-#define SML_KoBlockSize 24
+#define SML_KoBlockSize 25
 
 #define SML_KoCalcNumber(index) (index + SML_KoBlockOffset + _channelIndex * SML_KoBlockSize)
 #define SML_KoCalcIndex(number) ((number >= SML_KoCalcNumber(0) && number < SML_KoCalcNumber(SML_KoBlockSize)) ? (number - SML_KoBlockOffset) % SML_KoBlockSize : -1)
@@ -671,6 +676,7 @@
 #define SML_KocCurrentL1 21
 #define SML_KocCurrentL2 22
 #define SML_KocCurrentL3 23
+#define SML_KocMeterStatus 24
 
 // {{0:Smartmeter %Z%}}: Identifikationsnummer
 #define KoSML_cIdentifier                         (knx.getGroupObject(SML_KoCalcNumber(SML_KocIdentifier)))
@@ -720,6 +726,8 @@
 #define KoSML_cCurrentL2                          (knx.getGroupObject(SML_KoCalcNumber(SML_KocCurrentL2)))
 // {{0:Smartmeter %Z%}}: Strom L3
 #define KoSML_cCurrentL3                          (knx.getGroupObject(SML_KoCalcNumber(SML_KocCurrentL3)))
+// {{0:Smartmeter %Z%}}: Statuswort (Rohwert)
+#define KoSML_cMeterStatus                        (knx.getGroupObject(SML_KoCalcNumber(SML_KocMeterStatus)))
 
 #define MBUS_Mode                                1637      // 8 Bits, Bit 7-0
 #define MBUS_Gain                                1638      // 8 Bits, Bit 7-0
