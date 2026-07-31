@@ -26,7 +26,7 @@
                 "--Debug",
                 "-h",
                 "include/knxprod.h",
-                "src/MeterModule"
+                "src/MeterModule-Release"
             ],
             "problemMatcher": [],
             "group": "test"
