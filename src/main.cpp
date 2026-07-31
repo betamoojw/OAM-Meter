@@ -1,18 +1,21 @@
+#include "OpenKNX.h"
 
 #include "GpioBinaryInputModule.h"
 #include "Logic.h"
 #include "MeterModule.h"
 #include "NetworkModule.h"
-#include "OpenKNX.h"
+#ifdef WMBUS_SPI
+    #include "MBusModule.h"
+#endif
 #include "UsbExchangeModule.h"
 #include "VirtualButtonModule.h"
 #ifndef OPENKNX_FILE_TRANSFER_IGNORE
     #include "FileTransferModule.h"
 #endif
-#ifndef ARDUINO_ARCH_ESP32
-    #include "SMLModule.h"
-    #include <SoftwareSerial.h>
+#if defined(KNX_IP_LAN) || defined(KNX_IP_WIFI)
+    #include "NetworkModule.h"
 #endif
+#include "SMLModule.h"
 
 #ifdef SML_TEST_STRINGS
     #include "SMLSamples.h"
@@ -45,16 +48,18 @@ void setup()
 
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxMeterModule);
-#ifndef ARDUINO_ARCH_ESP32
     openknx.addModule(3, openknxSMLModule);
-#endif
+
 #if defined(OPENKNX_BI_GPIO_PINS) && OPENKNX_BI_GPIO_COUNT > 0 && BI_ChannelCount > 0
     openknx.addModule(6, openknxGpioBinaryInputModule);
 #endif
-#if MASK_VERSION == 0x57B0
+#if defined(KNX_IP_LAN) || defined(KNX_IP_WIFI)
     openknx.addModule(10, openknxNetwork);
 #endif
     openknx.addModule(7, openknxVirtualButtonModule);
+#ifdef WMBUS_SPI
+    openknx.addModule(10, openknxMBusModule);
+#endif
 
 #ifndef ARDUINO_ARCH_ESP32
     openknx.addModule(8, openknxUsbExchangeModule);
@@ -78,6 +83,16 @@ void setup()
     pinMode(26, OUTPUT);
     digitalWrite(26, HIGH);
     openknxSMLModule.getChannel(2)->setSerial(new SerialPIO(NOPIN, 27, PIO_BUFFER));
+
+#elif defined(DEVICE_SEN_UP1_8XTH)
+
+    pinMode(OKNXHW_SENSOR_A2_SDA_PIN, OUTPUT);
+    digitalWrite(OKNXHW_SENSOR_A2_SDA_PIN, HIGH);
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_SENSOR_A1_SCL_PIN, PIO_BUFFER));
+
+    pinMode(OKNXHW_SENSOR_B2_SDA_PIN, OUTPUT);
+    digitalWrite(OKNXHW_SENSOR_B2_SDA_PIN, HIGH);
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_SENSOR_B1_SCL_PIN, PIO_BUFFER));
 
 #elif defined(DEVICE_REG1_BASE_V0) || defined(DEVICE_REG1_BASE)
 
@@ -141,10 +156,38 @@ void setup()
 
 uint32_t _debugCore0 = 0;
 uint32_t _debugCore1 = 0;
+uint32_t _gaExtractorTimer = 0;
+bool _gaExtractorStarted = false;
 
 void loop()
 {
     openknx.loop();
+
+    // Query gaextractor after 10 s, then every 30 s
+    // auto queryGaExtractor = []() {
+    //     logInfo("GAExtractor", "Querying https://tools.openknx.de/gaextractor/");
+    //     openknxNetwork.webclient.get("https://tools.openknx.de/gaextractor/")
+    //         // .ignoreBody()
+    //         .onDone([](const OpenKNX::Network::Webclient::Response &res) {
+    //             logIndentUp();
+    //             logInfo("GAExtractor", "HTTP %d (%s) %u bytes", res.status(), res.success() ? "ok" : "failed", (unsigned)res.bodySize());
+    //             logIndentDown();
+    //         })
+    //         .send();
+    // };
+
+    // if (!_gaExtractorStarted && millis() >= 10000)
+    // {
+    //     _gaExtractorStarted = true;
+    //     _gaExtractorTimer = millis();
+    //     queryGaExtractor();
+    // }
+    // else if (_gaExtractorStarted && delayCheck(_gaExtractorTimer, 30000))
+    // {
+    //     _gaExtractorTimer = millis();
+    //     queryGaExtractor();
+    // }
+
     if (delayCheck(_debugCore0, 1000))
     {
 #ifndef OPENKNX_DUALCORE
