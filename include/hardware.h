@@ -1,8 +1,6 @@
 #pragma once
 #include "HardwareConfig.h"
 
-#define FIRMWARE_NAME "Zaehlermodul"
-
 #ifdef DEVICE_PIPICO_BCU_CONNECTOR
 // Pin 14+15 und SPI1 kann später für das I2C Display genutzt werden
 

@@ -22,8 +22,7 @@
 
 void setup()
 {
-    const uint8_t firmwareRevision = 0;
-    openknx.init(firmwareRevision);
+    openknx.init();
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxMeterModule);
 #ifndef ARDUINO_ARCH_ESP32
@@ -56,35 +55,35 @@ void setup()
 
     pinMode(8, OUTPUT);
     digitalWrite(8, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(SerialPIO::NOPIN, 9, PIO_BUFFER));
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, 9, PIO_BUFFER));
 
     pinMode(10, OUTPUT);
     digitalWrite(10, HIGH);
-    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(SerialPIO::NOPIN, 11, PIO_BUFFER));
+    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, 11, PIO_BUFFER));
 
     pinMode(26, OUTPUT);
     digitalWrite(26, HIGH);
-    openknxSMLModule.getChannel(2)->setSerial(new SerialPIO(SerialPIO::NOPIN, 27, PIO_BUFFER));
+    openknxSMLModule.getChannel(2)->setSerial(new SerialPIO(NOPIN, 27, PIO_BUFFER));
 
 #elif defined(DEVICE_REG1_BASE_V0) || defined(DEVICE_REG1_BASE)
 
     pinMode(OKNXHW_REG1_SENSOR_SDA_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG1_SENSOR_SDA_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(SerialPIO::NOPIN, 9, PIO_BUFFER)); // Onboard
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, 9, PIO_BUFFER)); // Onboard
 
 #elif defined(DEVICE_REG1_SEN_MULTI)
 
     pinMode(OKNXHW_REG1_APP_SEN_MULTI_SENSOR1_SDA_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG1_APP_SEN_MULTI_SENSOR1_SDA_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(SerialPIO::NOPIN, OKNXHW_REG1_APP_SEN_MULTI_SENSOR1_SCL_RX_PIN, PIO_BUFFER)); // SML Platine A (oben)
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG1_APP_SEN_MULTI_SENSOR1_SCL_RX_PIN, PIO_BUFFER)); // SML Platine A (oben)
 
     pinMode(OKNXHW_REG1_APP_SEN_MULTI_SENSOR2_SDA_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG1_APP_SEN_MULTI_SENSOR2_SDA_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(SerialPIO::NOPIN, OKNXHW_REG1_APP_SEN_MULTI_SENSOR2_SCL_RX_PIN, PIO_BUFFER)); // SML Platine B (unten)
+    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG1_APP_SEN_MULTI_SENSOR2_SCL_RX_PIN, PIO_BUFFER)); // SML Platine B (unten)
 
     pinMode(OKNXHW_REG1_SENSOR_SDA_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG1_SENSOR_SDA_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(2)->setSerial(new SerialPIO(SerialPIO::NOPIN, 9, PIO_BUFFER)); // Onboard
+    openknxSMLModule.getChannel(2)->setSerial(new SerialPIO(NOPIN, 9, PIO_BUFFER)); // Onboard
 
 #elif defined(DEVICE_SMARTMF_1TE_BE_3CH)
 
@@ -98,21 +97,21 @@ void setup()
 
     pinMode(SMARTMF_SML1_TX_PIN, OUTPUT);
     digitalWrite(SMARTMF_SML1_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(SerialPIO::NOPIN, SMARTMF_SML1_RX_PIN, PIO_BUFFER));
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, SMARTMF_SML1_RX_PIN, PIO_BUFFER));
 
     pinMode(SMARTMF_SML2_TX_PIN, OUTPUT);
     digitalWrite(SMARTMF_SML2_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(SerialPIO::NOPIN, SMARTMF_SML2_RX_PIN, PIO_BUFFER));
+    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, SMARTMF_SML2_RX_PIN, PIO_BUFFER));
 
 #elif defined(DEVICE_REG2_PIPICO_V1_DD_METER)
 
     pinMode(OKNXHW_REG2_MSENS_1_SDA0_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG2_MSENS_1_SDA0_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(SerialPIO::NOPIN, OKNXHW_REG2_MSENS_1_SCL0_RX_PIN, PIO_BUFFER));
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG2_MSENS_1_SCL0_RX_PIN, PIO_BUFFER));
 
     pinMode(OKNXHW_REG2_MSENS_2_SDA1_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG2_MSENS_2_SDA1_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(SerialPIO::NOPIN, OKNXHW_REG2_MSENS_2_SCL1_RX_PIN, PIO_BUFFER));
+    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG2_MSENS_2_SCL1_RX_PIN, PIO_BUFFER));
 
 #endif
 }
