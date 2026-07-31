@@ -21,7 +21,10 @@
     #include "SMLSamples.h"
 #endif
 
-#define PIO_BUFFER 64U
+// Ein SML-Telegramm ist rund 370 Byte groß und braucht bei 9600 Baud etwa 380ms.
+// Mit 512 Byte passt ein komplettes Telegramm in den Empfangspuffer, auch wenn der
+// Hauptloop währenddessen nicht drankommt. Je Kanal kostet das 1 Byte pro Eintrag.
+#define SML_BUFFER 512U
 
 void setup()
 {
@@ -74,52 +77,52 @@ void setup()
 
     pinMode(8, OUTPUT);
     digitalWrite(8, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, 9, PIO_BUFFER));
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, 9, SML_BUFFER));
 
     pinMode(10, OUTPUT);
     digitalWrite(10, HIGH);
-    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, 11, PIO_BUFFER));
+    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, 11, SML_BUFFER));
 
     pinMode(26, OUTPUT);
     digitalWrite(26, HIGH);
-    openknxSMLModule.getChannel(2)->setSerial(new SerialPIO(NOPIN, 27, PIO_BUFFER));
+    openknxSMLModule.getChannel(2)->setSerial(new SerialPIO(NOPIN, 27, SML_BUFFER));
 
 #elif defined(DEVICE_SEN_UP1_8XTH)
 
     pinMode(OKNXHW_SENSOR_A2_SDA_PIN, OUTPUT);
     digitalWrite(OKNXHW_SENSOR_A2_SDA_PIN, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_SENSOR_A1_SCL_PIN, PIO_BUFFER));
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_SENSOR_A1_SCL_PIN, SML_BUFFER));
 
     pinMode(OKNXHW_SENSOR_B2_SDA_PIN, OUTPUT);
     digitalWrite(OKNXHW_SENSOR_B2_SDA_PIN, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_SENSOR_B1_SCL_PIN, PIO_BUFFER));
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_SENSOR_B1_SCL_PIN, SML_BUFFER));
 
 #elif defined(DEVICE_REG1_BASE_V0) || defined(DEVICE_REG1_BASE)
 
     pinMode(OKNXHW_REG1_SENSOR_SDA_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG1_SENSOR_SDA_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, 9, PIO_BUFFER)); // Onboard
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, 9, SML_BUFFER)); // Onboard
 
 #elif defined(DEVICE_REG1_SEN_MULTI)
 
     pinMode(OKNXHW_REG1_APP_SEN_MULTI_SENSOR1_SDA_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG1_APP_SEN_MULTI_SENSOR1_SDA_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG1_APP_SEN_MULTI_SENSOR1_SCL_RX_PIN, PIO_BUFFER)); // SML Platine A (oben)
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG1_APP_SEN_MULTI_SENSOR1_SCL_RX_PIN, SML_BUFFER)); // SML Platine A (oben)
 
     pinMode(OKNXHW_REG1_APP_SEN_MULTI_SENSOR2_SDA_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG1_APP_SEN_MULTI_SENSOR2_SDA_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG1_APP_SEN_MULTI_SENSOR2_SCL_RX_PIN, PIO_BUFFER)); // SML Platine B (unten)
+    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG1_APP_SEN_MULTI_SENSOR2_SCL_RX_PIN, SML_BUFFER)); // SML Platine B (unten)
 
     pinMode(OKNXHW_REG1_SENSOR_SDA_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG1_SENSOR_SDA_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(2)->setSerial(new SerialPIO(NOPIN, 9, PIO_BUFFER)); // Onboard
+    openknxSMLModule.getChannel(2)->setSerial(new SerialPIO(NOPIN, 9, SML_BUFFER)); // Onboard
 
 #elif defined(DEVICE_REG1_LAN_SEN_MULTI)
-    Serial1.setRxBufferSize(PIO_BUFFER);
+    Serial1.setRxBufferSize(SML_BUFFER);
     Serial1.setPins(OKNXHW_REG1_APP_SEN_MULTI_SENSOR1_SCL_RX_PIN, OKNXHW_REG1_APP_SEN_MULTI_SENSOR1_SDA_TX_PIN);
     openknxSMLModule.getChannel(0)->setSerial(&Serial1); // SML Platine A (oben)
 
-    Serial2.setRxBufferSize(PIO_BUFFER);
+    Serial2.setRxBufferSize(SML_BUFFER);
     Serial2.setPins(OKNXHW_REG1_APP_SEN_MULTI_SENSOR2_SCL_RX_PIN, OKNXHW_REG1_APP_SEN_MULTI_SENSOR2_SDA_TX_PIN);
     openknxSMLModule.getChannel(1)->setSerial(&Serial2); // SML Platine B (unten)
 
@@ -127,11 +130,11 @@ void setup()
 
     pinMode(OKNXHW_REG2_MSENS_1_SDA0_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG2_MSENS_1_SDA0_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG2_MSENS_1_SCL0_RX_PIN, PIO_BUFFER));
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG2_MSENS_1_SCL0_RX_PIN, SML_BUFFER));
 
     pinMode(OKNXHW_REG2_MSENS_2_SDA1_TX_PIN, OUTPUT);
     digitalWrite(OKNXHW_REG2_MSENS_2_SDA1_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG2_MSENS_2_SCL1_RX_PIN, PIO_BUFFER));
+    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, OKNXHW_REG2_MSENS_2_SCL1_RX_PIN, SML_BUFFER));
 
 #elif defined(DEVICE_SMARTMF_1TE_BE_3CH)
 
@@ -145,11 +148,11 @@ void setup()
 
     pinMode(SMARTMF_SML1_TX_PIN, OUTPUT);
     digitalWrite(SMARTMF_SML1_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, SMARTMF_SML1_RX_PIN, PIO_BUFFER));
+    openknxSMLModule.getChannel(0)->setSerial(new SerialPIO(NOPIN, SMARTMF_SML1_RX_PIN, SML_BUFFER));
 
     pinMode(SMARTMF_SML2_TX_PIN, OUTPUT);
     digitalWrite(SMARTMF_SML2_TX_PIN, HIGH);
-    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, SMARTMF_SML2_RX_PIN, PIO_BUFFER));
+    openknxSMLModule.getChannel(1)->setSerial(new SerialPIO(NOPIN, SMARTMF_SML2_RX_PIN, SML_BUFFER));
 
 #endif
 }
