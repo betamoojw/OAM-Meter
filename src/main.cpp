@@ -23,6 +23,18 @@
 void setup()
 {
     openknx.init();
+
+    // Muss vor openknx.setup() erfolgen: setzt ein Modul in seinem setup() die LED
+    // seiner Function-ID, bevor ihr hier eine physische LED zugewiesen wurde, läuft
+    // das ins Leere und die LED bleibt bis zur nächsten Statusänderung aus.
+    if (openknx.ledFunctions.useDefaultFunction())
+    {
+#if defined(DEVICE_PIPICO_BCU_CONNECTOR) || defined(DEVICE_SEN_UP1_8XTH) || defined(DEVICE_REG1_BASE_V0) || defined(DEVICE_REG1_BASE) || defined(DEVICE_REG1_SEN_MULTI)
+        openknx.ledFunctions.assignLed2Function(openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3), 200); // SML Gesamtstatus
+        openknx.ledFunctions.assignLed2Function(openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2), 600); // BI Status
+#endif
+    }
+
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxMeterModule);
 #ifndef ARDUINO_ARCH_ESP32
@@ -44,12 +56,6 @@ void setup()
 #endif
 
     openknx.setup();
-
-#if defined(INFO3_LED_PIN)
-//    openknx.info3Led.activity(openknxSMLModule.lastReceived);
-#elif defined(INFO1_LED_PIN)
-    openknx.info1Led.activity(openknxSMLModule.lastReceived);
-#endif
 
 #if defined(DEVICE_PIPICO_BCU_CONNECTOR)
 
