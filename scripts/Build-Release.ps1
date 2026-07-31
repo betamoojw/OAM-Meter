@@ -35,49 +35,32 @@ if (!$?) { exit 1 }
 
 # Example call, the following 2 lines might be there multiple times for each firmware which should be built
 
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_PIPICO_BCU_CONNECTOR OpenKNX-PiPico-BCU-Connector uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_PIPICO_BCU_CONNECTOR OpenKNX-PiPico-BCU-Connector rp2040-tp
 if (!$?) { exit 1 }
 
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_SEN_UP1_8XTH OpenKNX-UP1-8xSensor uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_SEN_UP1_8XTH OpenKNX-UP1-8xSensor rp2040-tp
 if (!$?) { exit 1 }
 
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG1_BASE_V0 OpenKNX-REG1-Basismodul-V0 uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG1_BASE_V0 OpenKNX-REG1-Basismodul-V0 rp2040-tp
 if (!$?) { exit 1 }
 
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG1_BASE OpenKNX-REG1-Basismodul uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG1_BASE OpenKNX-REG1-Basismodul rp2040-tp
 if (!$?) { exit 1 }
 
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG1_BASE_IP OpenKNX-REG1-Basismodul-IP uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG1_BASE_IP OpenKNX-REG1-Basismodul-IP rp2040-ip
 if (!$?) { exit 1 }
 
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG1_SEN_MULTI OpenKNX-REG1-MultiSensor uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG1_SEN_MULTI OpenKNX-REG1-MultiSensor rp2040-tp
 if (!$?) { exit 1 }
 
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG2_PIPICO_V1_DD_METER OpenKNX-REG2-PiPico-V1-DeviceDisplay-Meter uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_REG2_PIPICO_V1_DD_METER OpenKNX-REG2-PiPico-V1-DeviceDisplay-Meter rp2040-tp
 if (!$?) { exit 1 }
 
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_SMARTMF_2SML_3BE Smart-MF-eHZ-Schnittstelle uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_SMARTMF_2SML_3BE Smart-MF-eHZ-Schnittstelle rp2040-tp
 if (!$?) { exit 1 }
 
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_SMARTMF_1TE_BE_3CH Smart-MF-S0-Zaehlermodul uf2
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_DEVICE_SMARTMF_1TE_BE_3CH Smart-MF-S0-Zaehlermodul rp2040-tp
 if (!$?) { exit 1 }
-
-
-# if ($args[0] -eq "Dev") {
-# ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_OKNXHW_REG1_BASE_V0 OKNXHW_REG1_BASE_V0 uf2
-# if (!$?) { exit 1 }
-# }
-
-# cleanup unneeded files
-Remove-Item -Path release/OTA-Upload-Firmware-*.ps1 -Exclude *OpenKNX-REG1-Basismodul-IP* -ErrorAction SilentlyContinue -Force
-Remove-Item -Path release/KNX-Upload-Firmware-OpenKNX-REG1-Basismodul-IP.ps1 -ErrorAction SilentlyContinue -Force
-
-# build firmware based on generated headerfile for SAMD
-# ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_SAMD_v31 firmware-v31 bin
-# if (!$?) { exit 1 }
-
-# ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_SAMD_v30 firmware-v30 bin
-# if (!$?) { exit 1 }
 
 # execute generic post-build steps
 lib/OGM-Common/scripts/setup/reusable/Build-Release-Postprocess.ps1 $args[0]
