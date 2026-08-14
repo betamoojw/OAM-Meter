@@ -56,12 +56,12 @@ mehr.
 
 | Modul                     | vorher | jetzt       |
 | ------------------------- | ------ | ----------- |
-| OGM-Common (Basis)        | 1.4.0  | 1.8.1       |
-| SML                       | 0.1.1  | 0.2.0       |
+| OGM-Common (Basis)        | 1.4.0  | 1.9.1       |
+| SML                       | 0.1.1  | 1.0.0       |
 | Wireless M-Bus            | —      | 0.1.0 (neu) |
-| Meter                     | 0.5.0  | 0.6.0       |
-| Netzwerk                  | 0.5.0  | 0.6.0       |
-| Logikmodul                | 3.7.0  | 4.4.0       |
-| Binäreingang              | 0.2.1  | 0.3.1       |
-| Virtuelle Taster          | 0.5.1  | 0.6.0       |
+| Meter                     | 0.5.0  | 1.0.0       |
+| Netzwerk                  | 0.5.0  | 0.7.0       |
+| Logikmodul                | 3.7.0  | 4.4.1       |
+| Binäreingang              | 0.2.1  | 0.4.0       |
+| Virtuelle Taster          | 0.5.1  | 0.7.0       |
 | Konfigurationstransfer    | 0.4.0  | 0.5.0       |
