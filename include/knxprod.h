@@ -19,20 +19,20 @@
 #define ETS_ModuleId_BI 8
 #define ETS_ModuleId_BTN 9
 #define ETS_ModuleId_LOG 10
-#define MAIN_FirmwareName "Zaehlermodul (Dev)"
-#define MAIN_OpenKnxId 0xAF
-#define MAIN_ApplicationNumber 5
-#define MAIN_ApplicationVersion 168
+#define MAIN_FirmwareName "Zaehlermodul"
+#define MAIN_OpenKnxId 0xA3
+#define MAIN_ApplicationNumber 4
+#define MAIN_ApplicationVersion 16
 #define MAIN_FirmwareRevision 0
 #define MAIN_ApplicationEncoding iso-8859-15
-#define MAIN_ParameterSize 7952
+#define MAIN_ParameterSize 14983
 #define MAIN_MaxKoNumber 953
 #define MAIN_OrderNumber "OpenKnxMeter"
-#define BASE_ModuleVersion 24
+#define BASE_ModuleVersion 25
 #define NET_ModuleVersion 7
 #define UCT_ModuleVersion 5
-#define MTR_ModuleVersion 7
-#define SML_ModuleVersion 3
+#define MTR_ModuleVersion 16
+#define SML_ModuleVersion 16
 #define MBUS_ModuleVersion 1
 #define BI_ModuleVersion 4
 #define BTN_ModuleVersion 7
@@ -1944,7 +1944,7 @@
 // Welcher Feiertag ist morgen?
 #define KoLOG_Holiday2                            (knx.getGroupObject(LOG_KoHoliday2))
 
-#define LOG_ChannelCount 20
+#define LOG_ChannelCount 99
 
 // Parameter per channel
 #define LOG_ParamBlockOffset 6172

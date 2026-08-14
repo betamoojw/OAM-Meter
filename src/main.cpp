@@ -172,37 +172,10 @@ void setup()
 
 uint32_t _debugCore0 = 0;
 uint32_t _debugCore1 = 0;
-uint32_t _gaExtractorTimer = 0;
-bool _gaExtractorStarted = false;
 
 void loop()
 {
     openknx.loop();
-
-    // Query gaextractor after 10 s, then every 30 s
-    // auto queryGaExtractor = []() {
-    //     logInfo("GAExtractor", "Querying https://tools.openknx.de/gaextractor/");
-    //     openknxNetwork.webclient.get("https://tools.openknx.de/gaextractor/")
-    //         // .ignoreBody()
-    //         .onDone([](const OpenKNX::Network::Webclient::Response &res) {
-    //             logIndentUp();
-    //             logInfo("GAExtractor", "HTTP %d (%s) %u bytes", res.status(), res.success() ? "ok" : "failed", (unsigned)res.bodySize());
-    //             logIndentDown();
-    //         })
-    //         .send();
-    // };
-
-    // if (!_gaExtractorStarted && millis() >= 10000)
-    // {
-    //     _gaExtractorStarted = true;
-    //     _gaExtractorTimer = millis();
-    //     queryGaExtractor();
-    // }
-    // else if (_gaExtractorStarted && delayCheck(_gaExtractorTimer, 30000))
-    // {
-    //     _gaExtractorTimer = millis();
-    //     queryGaExtractor();
-    // }
 
     if (delayCheck(_debugCore0, 1000))
     {

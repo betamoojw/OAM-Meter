@@ -1,6 +1,6 @@
 # Changes
 
-## 0.9.0
+## 1.0.0
 
 *(seit 0.6.0, veröffentlicht am 4. Juli 2025)*
 

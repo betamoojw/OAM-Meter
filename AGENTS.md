@@ -7,12 +7,31 @@ Geräte-Applikation ("Zählermodul"), die mehrere OpenKNX-Funktionsmodule
 ## Basis: OGM-Common
 
 Alle Module hier (inkl. dieser Applikation selbst) bauen auf
-[lib/OGM-Common/AGENTS.md](lib/OGM-Common/AGENTS.md) auf — Modulsystem,
-LED-/Flash-/Zeit-API, Logging, Embedded-Rahmenbedingungen und
-Code-Konventionen sind dort beschrieben und gelten hier unverändert
-mit. Vorhandene Claude-Skills/Agents aus OGM-Common (z. B.
+@lib/OGM-Common/AGENTS.md auf — Modulsystem, LED-/Flash-/Zeit-API,
+Logging, Embedded-Rahmenbedingungen und Code-Konventionen sind dort
+beschrieben und gelten hier unverändert mit. Vorhandene
+Claude-Skills/Agents aus OGM-Common (z. B.
 `.claude/agents/openknx-channelselect.md` für das Kanalauswahl-Muster)
 gelten ebenso für dieses Projekt.
+
+## Eingebundene OFM-Module
+
+OAM-Meter kombiniert die folgenden Funktionsmodule aus `lib/`. Deren
+jeweilige AGENTS.md beschreibt Ziel, Kanalmodell und Besonderheiten des
+Moduls und gilt unverändert mit, sobald das Modul in
+`src/main.cpp` per `openknx.addModule(...)` eingebunden wird:
+
+- @lib/OFM-BinaryInput/AGENTS.md — Binäreingänge (Fenster-/Türkontakte)
+- @lib/OFM-Meter/AGENTS.md — Zählermodul (Wert-, Impuls- oder Statuswort-Zähler auf KNX)
+- @lib/OFM-Network/AGENTS.md — IP-Konnektivität (WLAN/Ethernet), OTA, mDNS, NTP, Ping
+- @lib/OFM-SML/AGENTS.md — SML-Telegramme deutscher Smartmeter über serielle Schnittstelle
+- @lib/OFM-VirtualButton/AGENTS.md — virtuelle Taster auf Binäreingängen
+- @lib/OFM-WirelessMBus/AGENTS.md — Wireless-M-Bus-Empfang (Wasser-/Wärmemengenzähler) per CC1101
+
+Module unter `lib/` ohne eigene AGENTS.md (z. B. `OFM-ConfigTransfer`,
+`OFM-FileTransferModule`, `OFM-LogicModule`, `OFM-UsbExchange`,
+`OGM-HardwareConfig`) folgen den allgemeinen Konventionen aus
+OGM-Common.
 
 ## Aufbau
 
