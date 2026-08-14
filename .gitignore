@@ -11,4 +11,6 @@ releases/*
 src/*.baggages
 compile_commands.json
 include/versions.h
+include/buildtime.h
+include/webassets.h
 src/SMLSamples.h
